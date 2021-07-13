@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="css">
+    <title>TodoList</title>
+</head>
+<body>
+
+    <div class="todo-list">
+        <div class="todo-list-wrapper">
+            <h1 class="todo-list__title">Task</h1>
+            <div class="tasks-wrapper">
+                <div class="task">
+                    <label class="task__title"><input type="checkbox" i>Something Here</label>
+                    <button class="button task__button-delete">Delete</button>
+                </div>
+                <div class="task">
+                    <label class="task__title"><input type="checkbox">Css</label>
+                    <button class="button task__button-delete">Delete</button>
+                </div>
+            </div>
+            <div class="input-wrapper">
+                <input type="text" class="input__text" placeholder="Add Todo...">
+                <button class="button input__button">Add</button>
+                <div class="error"></div>
+            </div>
+        </div>
+    </div>
+    <script src="./build/js/index.js"></script>
+</body>
+</html>
