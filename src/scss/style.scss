@@ -1,18 +1,24 @@
 html,body{
   height: 100%;
-  background: red;
-  color: blue;
+  //background: red;
+  //color: blue;
 }
 
 .todo-list{
   height: 100%;
-  &__wrapper{
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &-wrapper{
+    border: 1px solid #8080802b;
+    border-radius: 10px;
+    padding: 50px;
   }
-  &__title{}
+  &__title{
+    border-bottom: 1px solid #8080802b;
+    padding-bottom: 20px;
+    margin: 0 0 40px 0;
+  }
   tasks-wrapper{
     .task{
       &__title{}
