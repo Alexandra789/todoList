@@ -26,6 +26,7 @@ const TerserPlugin = require("terser-webpack-plugin");
 //     template: "./index.html",
 //   }),
 // ]
+console.log(23);
 
 const config = {
   entry: "./index.js",
