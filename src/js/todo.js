@@ -6,6 +6,15 @@ let error = document.querySelector('.error');
 let deleteButton = document.querySelectorAll('.task__button-delete');
 let title = document.querySelector('.todo-list__title');
 
+const getTaskCount = (selector) => {
+    let count = 0;
+    selector.forEach((item) => {
+        count++;
+    });
+
+    return count;
+}
+
 title.innerText +=' '+task.length;
 let countTask = task.length;
 inputButton.addEventListener('click', ()=>{
@@ -22,7 +31,10 @@ inputButton.addEventListener('click', ()=>{
             `<button class=\"button task__button-delete\">Delete</button>`;
         tasksWrapper.appendChild(newTask);
         inputText.innerText += '';
-        title.innerText = `Task ${++countTask}`;
+
+        const taskNodes = document.querySelectorAll('.task');
+        title.innerText = `Task ${getTaskCount(taskNodes)}`;
+
         deleteButton = document.querySelectorAll('.task__button-delete');
     }
 })
