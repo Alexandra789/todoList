@@ -3,10 +3,19 @@ let inputText = document.querySelector('.input__text');
 let tasksWrapper = document.querySelector('.tasks-wrapper');
 let task = document.querySelectorAll('.task');
 let error = document.querySelector('.error');
-let deleteButton = document.querySelectorAll('.task__button-delete');
+let deleteButton = document.querySelector('.task__button-delete');
 let title = document.querySelector('.todo-list__title');
+// deleteButton = document.querySelectorAll('.task__button-delete');
+// const getTaskCount = (selector) => {
+//     let count = 0;
+//     selector.forEach((item) => {
+//         count++;
+//     });
+//
+//     return count;
+// }
 
-title.innerText +=' '+task.length;
+title.innerText = `${task.length} Task `
 let countTask = task.length;
 inputButton.addEventListener('click', ()=>{
 
@@ -22,16 +31,22 @@ inputButton.addEventListener('click', ()=>{
             `<button class=\"button task__button-delete\">Delete</button>`;
         tasksWrapper.appendChild(newTask);
         inputText.innerText += '';
-        title.innerText = `Task ${++countTask}`;
-        deleteButton = document.querySelectorAll('.task__button-delete');
+
+        // const taskNodes = document.querySelectorAll('.task');
+        title.innerText = `${++countTask} Task `;
+
+
     }
 })
 
-for (let i = 0; i < deleteButton.length; i++) {
-    deleteButton[i].addEventListener('click', ()=> {
-        deleteButton = document.querySelectorAll('.task__button-delete');
-        deleteButton[i].parentNode.remove();
-        title.innerText = `Task ${--countTask}`;
+    tasksWrapper.addEventListener('click', (e)=> {
+
+        if(e.target.className === 'button task__button-delete'){
+            console.log(e.target.parentNode);
+            console.log(e.target);
+            e.target.parentNode.remove();
+            title.innerText = `${--countTask} Task `;
+        }
+
     })
-}
 

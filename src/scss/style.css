@@ -1,0 +1,64 @@
+html,
+body {
+  height: 100%;
+  margin: 0px;
+}
+
+.button {
+  float: right;
+  border: 1px solid #8080802b;
+  border-radius: 20px;
+  height: 25px;
+  outline: none;
+  width: 75px;
+}
+
+.todo-list {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.todo-list-wrapper {
+  border: 1px solid #8080802b;
+  border-radius: 10px;
+  padding: 50px;
+}
+
+.todo-list__title {
+  border-bottom: 1px solid #8080802b;
+  padding-bottom: 20px;
+  margin: 0 0 40px 0;
+}
+
+.todo-list .tasks-wrapper .task {
+  margin-bottom: 20px;
+}
+
+.todo-list .tasks-wrapper .task:last-child {
+  margin-bottom: 40px;
+}
+
+.todo-list .tasks-wrapper .task__title {
+  font-size: 18px;
+  width: 240px;
+  display: inline-block;
+  word-break: break-all;
+  margin-right: 15px;
+}
+
+.todo-list .input-wrapper .input__text {
+  outline: none;
+  border: 1px solid #8080802b;
+  border-radius: 10px;
+  width: 70%;
+  height: 25px;
+  padding: 0 10px;
+}
+
+.todo-list .input-wrapper .error {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+}
