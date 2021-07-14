@@ -1,58 +1,13 @@
-const path = require("path");
-const fs = require("fs");
-const {CleanWebpackPlugin} = require("clean-webpack-plugin");
-const CopyPlugin = require("copy-webpack-plugin");
-// const HTMLWebpackPlugin = require("html-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
-const TerserPlugin = require("terser-webpack-plugin");
+const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-// function generateHtmlPlugins(templateDir) {
-//   const templateFiles = fs.readdirSync(path.resolve(__dirname, templateDir));
-//   return templateFiles.map((item) => {
-//     const parts = item.split(".");
-//     const name = parts[0];
-//     const extension = parts[1];
-//     return new HTMLWebpackPlugin({
-//       filename: `${name}.html`,
-//       template: path.resolve(__dirname, `${templateDir}/${name}.${extension}`),
-//       inject: false,
-//     });
-//   });
-// }
-
-// const base = [
-//   new HTMLWebpackPlugin({
-//     template: "./index.html",
-//   }),
-// ]
-
-const config = {
-  entry: "./index.js",
+module.exports = {
+  entry: './src/index.js',
   output: {
-    path: path.resolve(__dirname, "build"),
-    filename: "./js/index.js",
+    path: path.resolve(__dirname, './build/'),
+    filename: 'js/[name].min.js'
   },
   devtool: "source-map",
-  // mode: "production",
-  optimization: {
-    minimize: true,
-    minimizer: [
-      new CssMinimizerPlugin({
-        minimizerOptions: {
-          preset: [
-            "default",
-            {
-              discardComments: {removeAll: true},
-            },
-          ],
-        },
-      }),
-      new TerserPlugin({
-        extractComments: true,
-      }),
-    ],
-  },
   module: {
     rules: [
       {
@@ -61,55 +16,33 @@ const config = {
         include: path.resolve(__dirname, 'src/js')
       },
       {
-        test: /\.(ttf|woff|woff2|eot)$/,
-        use: ['file-loader']
-      },
-      {
         test: /\.(sass|scss)$/,
-        include: path.resolve(__dirname, "src/scss"),
+        include: path.resolve(__dirname, 'src/scss'),
         use: [
           {
             loader: MiniCssExtractPlugin.loader,
             options: {},
           },
-
           {
-            loader: "css-loader",
+            loader: 'css-loader',
             options: {
               sourceMap: true,
-              url: false,
-            },
+              url: false
+            }
           },
           {
             loader: "sass-loader",
             options: {
-              sourceMap: true,
-            },
-          },
-        ],
-      },
-    ],
+              sourceMap: true
+            }
+          }
+        ]
+      }
+    ]
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: "./css/style.bundle.css",
+      filename: "./css/style.min.css",
     }),
-  //
-  //   new CopyPlugin({
-  //     patterns: [
-  //       {
-  //         from: "./assets/images",
-  //         to: "./img",
-  //       },
-  //     ],
-  //   }),
   ]
-      // .concat(base),
-};
-
-module.exports = (env, argv) => {
-  if (argv.mode === "production") {
-    config.plugins.push(new CleanWebpackPlugin());
-  }
-  return config;
 };
